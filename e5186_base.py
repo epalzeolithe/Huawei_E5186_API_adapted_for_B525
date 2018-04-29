@@ -12,7 +12,7 @@ UnshakableSalt.com
 
 """
 try:
-    # Load config from the local smsconfig.py file
+    # Load config from the local e5186_config.py file
     from e5186_config import BASEURL, USERNAME, PASSWORD
 except ImportError:
     print("No config file")
