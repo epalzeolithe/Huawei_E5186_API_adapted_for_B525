@@ -101,3 +101,4 @@ ENV/
 # mypy
 .mypy_cache/
 e5186_config.py
+e5186_config.py
