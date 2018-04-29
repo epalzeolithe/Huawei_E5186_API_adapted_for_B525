@@ -1,4 +1,6 @@
-#
+# New Ignore, as we dont want to share too much
+
+e5186_config.py
 
 # The NORMAL git ignore for python
 # Byte-compiled / optimized / DLL files
