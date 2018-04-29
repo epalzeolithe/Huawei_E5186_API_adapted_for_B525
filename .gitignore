@@ -102,3 +102,4 @@ ENV/
 .mypy_cache/
 e5186_config.py
 e5186_config.py
+.vscode/settings.json
