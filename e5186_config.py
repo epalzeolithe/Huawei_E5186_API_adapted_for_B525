@@ -12,5 +12,5 @@ Information Security Consultant
 """
 BASEURL = "http://192.168.1.252"
 USERNAME = "admin"
-PASSWORD = "StilNotAVeryGoodPassword"
+PASSWORD = "F1ref0x98"
 
