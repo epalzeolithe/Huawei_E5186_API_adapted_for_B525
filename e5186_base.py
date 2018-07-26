@@ -123,6 +123,7 @@ def loggedin_check(session):
 
 def check_uk_mobile(phonenumber):
     # Check to see if the phone number is correct for the UK
+    # ie,  correct length and starts 07 or +447 
     # REQUIRED : import re
     rule = re.compile(r'^(07\d{9}|\+?447\d{9})$') 
     if rule.search(phonenumber):
