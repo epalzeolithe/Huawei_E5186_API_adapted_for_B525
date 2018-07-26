@@ -19,6 +19,8 @@ except ImportError:
 import hashlib
 import base64
 import binascii
+import argparse
+import re
 import xml.etree.ElementTree as ET
 from datetime import datetime
 import requests
@@ -119,6 +121,14 @@ def loggedin_check(session):
         loggedin = False
     return loggedin
 
+def check_uk_mobile(phonenumber):
+    # Check to see if the phone number is correct for the UK
+    # REQUIRED : import re
+    rule = re.compile(r'^(07\d{9}|\+?447\d{9})$') 
+    if rule.search(phonenumber):
+        return True
+    else:
+        return False
 
 def main():
     """ Main part of the script"""
@@ -127,12 +137,20 @@ def main():
     loggedin = login(session)
     if loggedin:
         # Create the message to send
-        mynumber = '+447788974296'
+        parser = argparse.ArgumentParser()
+        parser.add_argument("smsnumber", help="The number you want to send to")
+        parser.add_argument("smsmessage", help="The message you want to send")
+        args = parser.parse_args()
+        smsnumber = args.smsnumber
+        smsmessage =  args.smsmessage [:139]
+        if not check_uk_mobile(args.smsnumber):
+            print("Invalid Phone Number")
+            quit()
         messagedate = datetime.now().isoformat(sep=' ', timespec='minutes')
-        mymessage = str(messagedate) + ' nice messgae'
-        smstosend = contructmessage(mynumber, mymessage)
+        smsmessage = str(messagedate) + smsmessage
+        smstosend = contructmessage(smsnumber, smsmessage)
         if send_sms(session, smstosend):
-            print("Message Sent to " + mynumber)
+            print("Message Sent to " + smsnumber)
     else:
         print("Log in Failure")
     # if Session then send
