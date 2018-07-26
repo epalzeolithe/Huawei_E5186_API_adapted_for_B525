@@ -7,7 +7,7 @@ Python3 Scripts to interact with Huawei E5186
 David Pollard
 Information Security Consultant
 UnshakableSalt.com
-26 April 2018
+26 July 2018
 
 """
 try:
