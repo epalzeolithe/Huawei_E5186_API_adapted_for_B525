@@ -1,0 +1,13 @@
+{
+    'results_link': 'http://iMac.local:8000/app/search/@go?sid=scheduler__admin__search__RMD5da37e8824fea9a37_at_1532674920_68010', 
+    'sid': 'scheduler__admin__search__RMD5da37e8824fea9a37_at_1532674920_68010', 
+    'result': {
+        'host': 'ubuntu', 
+        '_tc': '1749', 
+        'count': '1504', 
+        'percent': '85.991995'
+        }, 
+    'app': 'search', 
+    'owner': 'admin', 
+    'search_name': 'Test alert'
+}

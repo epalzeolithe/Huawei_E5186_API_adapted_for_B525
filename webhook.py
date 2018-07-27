@@ -2,7 +2,7 @@
 """
 webhook.py
 
-Python3 Webhook to receive data on port 5005
+Python3 Webhook to receive SPLUNK alert data on port 5005
 
 REQUIRES :  flask
 
@@ -17,21 +17,16 @@ from flask import Flask, request, abort
 
 app = Flask("webhook")
 @app.route('/webhook', methods=['POST'])
-
-def valid_ip(clientipaddress):
-    """ Check to make sure this is a local connection """
-    net = ip_network("192.168.1.0/24")
-    if clientipaddress in net:
-        return True
-    else:
-        return False
-
 def webhook():
-    """ webhook config and actions """    
-    if not valid_ip(request.remote_addr):
-        return """<title>403 Forbidden</title><h1>Forbidden</h1><p>Go stand in a corner monkeyboy</p>""", 403
+    """ webhook config and actions """
+    if not request.json:
+        abort(400)    
     if request.method == 'POST':
-        print(request.json)
+        ipaddress = request.remote_addr
+        data = request.get_json(force=True)
+        print(data["search_name"])
+        for splunkitem in data["result"]:
+            print(data["result"][splunkitem])
         return '', 200
     else:
         return """<title>404 Not Found</title><h1>Not Found</h1><p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>""", 404
@@ -41,11 +36,6 @@ if __name__ == '__main__':
     # Start up the Flask Listener
     app.debug = True
     app.run(host = '0.0.0.0',port=5005)
-
-
-down vote
-In Python 3.3 and later, you should be using the ipaddress module.
-
 
 
 
