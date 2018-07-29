@@ -1,4 +1,4 @@
-# Huawei_E5186_API
+# Huawei_B525_API
 Python3 Scripts to interact with a Huawei B525 (from E5186 code)
 
 Very good job from dpollardcouk who dealt with auth issue
